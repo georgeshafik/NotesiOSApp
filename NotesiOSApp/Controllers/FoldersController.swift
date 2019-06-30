@@ -41,14 +41,24 @@ class FoldersController: UITableViewController {
         
         // Navigation Controller has a toolbar that we can show when we show this controller
         self.navigationController?.setToolbarHidden(false, animated: false)
+        
+        // We placed a flexible barButtonSystemItem to pushed our New Folder toolbar button to the right
+        let items:[UIBarButtonItem] = [
+            UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil),
+            UIBarButtonItem(title: "New Folder", style: .done, target: self, action: nil)
+        ]
+        
+        self.toolbarItems = items
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-
-        // Navigation Controller has a toolbar that we can hid we we leave this controller
-        self.navigationController?.setToolbarHidden(true, animated: false)
-    }
+// Comment this out because we do not want to hide Toolbar on other view controllers
+// We basically want our Toolbar bar remain visiable on other view controllers
+//    override func viewWillDisappear(_ animated: Bool) {
+//        super.viewWillAppear(animated)
+//
+//        // Navigation Controller has a toolbar that we can hid we we leave this controller
+//        self.navigationController?.setToolbarHidden(true, animated: false)
+//    }
     
     fileprivate func setupTableView() {
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: CELL_ID)
