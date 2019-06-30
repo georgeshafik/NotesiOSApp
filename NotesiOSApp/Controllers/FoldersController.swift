@@ -19,6 +19,13 @@ extension FoldersController {
         cell.textLabel?.text = "here's a note folder"
         return cell
     }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let folderNotesController = FolderNotesController()
+        
+        // push it onto the stack
+        navigationController?.pushViewController(folderNotesController, animated: true)
+    }
 }
 
 // UITableViewController contains UITableViewSource and UITableViewDelegate
@@ -30,7 +37,7 @@ class FoldersController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = .yellow
+        view.backgroundColor = .white
         navigationItem.title = "Folders"
         
         setupTableView()
