@@ -49,6 +49,7 @@ class FoldersController: UITableViewController {
         ]
         
         self.toolbarItems = items
+        setupTranslucentView()
     }
     
 // Comment this out because we do not want to hide Toolbar on other view controllers
@@ -64,7 +65,33 @@ class FoldersController: UITableViewController {
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: CELL_ID)
         tableView.tableHeaderView = headerView
     }
+    
+    fileprivate func getImage(withColor color: UIColor, andSize size: CGSize) -> UIImage {
+        let rect = CGRect(x: 0, y: 0, width: size.width, height: size.height)
+        UIGraphicsBeginImageContextWithOptions(size, false, 0)
+        color.setFill()
+        UIRectFill(rect)
+        let image: UIImage = UIGraphicsGetImageFromCurrentImageContext()!
+        return image
+    }
+    
+    fileprivate func setupTranslucentView() {
+        // we have access to bottom toolbar
+        let toolBar = self.navigationController?.toolbar
+        
+        // we have access to top navigation bar
+        let navigationBar = self.navigationController?.navigationBar
 
+        let slightWhite = getImage(withColor: UIColor.white.withAlphaComponent(0.9), andSize: CGSize(width: 30, height: 30))
+        toolBar?.setBackgroundImage(slightWhite, forToolbarPosition: .any, barMetrics: .default)
+        
+        // This will get ride of the line in the bottom toolbar
+        toolBar?.setShadowImage(UIImage(), forToolbarPosition: .any)
+        
+        // Remove line in top navigatin bar also
+        navigationBar?.setBackgroundImage(slightWhite, for: .default)
+        navigationBar?.shadowImage  = slightWhite
+    }
 }
 
 extension FoldersController {
@@ -72,7 +99,7 @@ extension FoldersController {
 
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return 20
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
