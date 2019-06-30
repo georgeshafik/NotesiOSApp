@@ -36,6 +36,20 @@ class FoldersController: UITableViewController {
         setupTableView()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        // Navigation Controller has a toolbar that we can show when we show this controller
+        self.navigationController?.setToolbarHidden(false, animated: false)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        // Navigation Controller has a toolbar that we can hid we we leave this controller
+        self.navigationController?.setToolbarHidden(true, animated: false)
+    }
+    
     fileprivate func setupTableView() {
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: CELL_ID)
         tableView.tableHeaderView = headerView
