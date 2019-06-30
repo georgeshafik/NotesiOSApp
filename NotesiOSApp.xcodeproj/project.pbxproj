@@ -12,6 +12,7 @@
 		67F6E1F922C81893002BEF25 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 67F6E1F822C81893002BEF25 /* Assets.xcassets */; };
 		67F6E1FC22C81893002BEF25 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 67F6E1FA22C81893002BEF25 /* LaunchScreen.storyboard */; };
 		67F6E20522C830A4002BEF25 /* FolderNotesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F6E20422C830A4002BEF25 /* FolderNotesController.swift */; };
+		67F6E20722C8493E002BEF25 /* extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F6E20622C8493E002BEF25 /* extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		67F6E1FB22C81893002BEF25 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		67F6E1FD22C81893002BEF25 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		67F6E20422C830A4002BEF25 /* FolderNotesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderNotesController.swift; sourceTree = "<group>"; };
+		67F6E20622C8493E002BEF25 /* extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = extension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +61,7 @@
 				67F6E1F822C81893002BEF25 /* Assets.xcassets */,
 				67F6E1FA22C81893002BEF25 /* LaunchScreen.storyboard */,
 				67F6E1FD22C81893002BEF25 /* Info.plist */,
+				67F6E20622C8493E002BEF25 /* extension.swift */,
 			);
 			path = NotesiOSApp;
 			sourceTree = "<group>";
@@ -145,6 +148,7 @@
 				67F6E1F422C81892002BEF25 /* FoldersController.swift in Sources */,
 				67F6E20522C830A4002BEF25 /* FolderNotesController.swift in Sources */,
 				67F6E1F222C81892002BEF25 /* AppDelegate.swift in Sources */,
+				67F6E20722C8493E002BEF25 /* extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

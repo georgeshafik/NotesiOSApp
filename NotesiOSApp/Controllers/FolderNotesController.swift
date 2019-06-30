@@ -38,6 +38,7 @@ extension FolderNotesController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        // we will push a notes view controller here!
     }
 }
 
