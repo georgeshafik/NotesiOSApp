@@ -13,3 +13,4 @@ struct Note {
     var date:Date
     var text:String
 }
+
