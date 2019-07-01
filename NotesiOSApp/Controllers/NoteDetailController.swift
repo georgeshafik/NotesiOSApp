@@ -23,6 +23,21 @@ class NoteDetailController: UIViewController {
         return tf
     }()
     
+    // We want to return a date label
+    fileprivate var dateLabel: UILabel = {
+        let label = UILabel()
+        
+        // You want to set this to false in order to use
+        // programtic auto layout constraints
+        label.translatesAutoresizingMaskIntoConstraints = false
+        
+        label.font = UIFont.systemFont(ofSize: 14, weight: .light)
+        label.textColor = .gray
+        label.text = "July 1st 2019 at 1:04 pm"
+        label.textAlignment = .center
+        return label
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -35,14 +50,19 @@ class NoteDetailController: UIViewController {
     // 2. Make our constraints
     // 3. Activate our views
     fileprivate func setupUI() {
+        view.addSubview(dateLabel)
         view.addSubview(textView)
         
         // Lets constraint view by the top left bottom and right anchors
-        textView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        dateLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 90).isActive = true
+        dateLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20).isActive = true
+        dateLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20).isActive = true
+        
+        // You want to anchor textView top to dateLabel
+        textView.topAnchor.constraint(equalTo: dateLabel.topAnchor, constant: 15).isActive = true
         textView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20).isActive = true
         textView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20).isActive = true
         textView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
