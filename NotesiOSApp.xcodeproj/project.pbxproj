@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		671C660822C9FE0D0003AC74 /* FolderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671C660722C9FE0D0003AC74 /* FolderCell.swift */; };
 		671C660A22CA1BB00003AC74 /* NoteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671C660922CA1BB00003AC74 /* NoteCell.swift */; };
+		671C660D22CA30260003AC74 /* NoteFolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671C660C22CA30260003AC74 /* NoteFolder.swift */; };
+		671C660F22CA30350003AC74 /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671C660E22CA30350003AC74 /* Note.swift */; };
 		676614FE22C99CE40028F589 /* NoteDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 676614FD22C99CE40028F589 /* NoteDetailController.swift */; };
 		67F6E1F222C81892002BEF25 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F6E1F122C81892002BEF25 /* AppDelegate.swift */; };
 		67F6E1F422C81892002BEF25 /* FoldersController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F6E1F322C81892002BEF25 /* FoldersController.swift */; };
@@ -21,6 +23,8 @@
 /* Begin PBXFileReference section */
 		671C660722C9FE0D0003AC74 /* FolderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderCell.swift; sourceTree = "<group>"; };
 		671C660922CA1BB00003AC74 /* NoteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteCell.swift; sourceTree = "<group>"; };
+		671C660C22CA30260003AC74 /* NoteFolder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteFolder.swift; sourceTree = "<group>"; };
+		671C660E22CA30350003AC74 /* Note.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
 		676614FD22C99CE40028F589 /* NoteDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteDetailController.swift; sourceTree = "<group>"; };
 		67F6E1EE22C81892002BEF25 /* NotesiOSApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NotesiOSApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		67F6E1F122C81892002BEF25 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -52,6 +56,15 @@
 			path = Cells;
 			sourceTree = "<group>";
 		};
+		671C660B22CA300D0003AC74 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				671C660C22CA30260003AC74 /* NoteFolder.swift */,
+				671C660E22CA30350003AC74 /* Note.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		67F6E1E522C81892002BEF25 = {
 			isa = PBXGroup;
 			children = (
@@ -71,6 +84,7 @@
 		67F6E1F022C81892002BEF25 /* NotesiOSApp */ = {
 			isa = PBXGroup;
 			children = (
+				671C660B22CA300D0003AC74 /* Models */,
 				671C660622C9FDE90003AC74 /* Cells */,
 				67F6E20322C83068002BEF25 /* Controllers */,
 				67F6E1F122C81892002BEF25 /* AppDelegate.swift */,
@@ -167,6 +181,8 @@
 				67F6E1F222C81892002BEF25 /* AppDelegate.swift in Sources */,
 				67F6E20722C8493E002BEF25 /* extension.swift in Sources */,
 				676614FE22C99CE40028F589 /* NoteDetailController.swift in Sources */,
+				671C660F22CA30350003AC74 /* Note.swift in Sources */,
+				671C660D22CA30260003AC74 /* NoteFolder.swift in Sources */,
 				671C660A22CA1BB00003AC74 /* NoteCell.swift in Sources */,
 				671C660822C9FE0D0003AC74 /* FolderCell.swift in Sources */,
 			);
