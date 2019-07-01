@@ -9,6 +9,23 @@
 import UIKit
 
 
+// Extending UIColor - Converting HEX value to RGB
+extension UIColor {
+
+    convenience init(red: Int, green: Int, blue: Int) {
+        self.init(red: CGFloat(red)/255.0, green: CGFloat(green)/255.0, blue: CGFloat(blue)/255.0, alpha: 1)
+    }
+    
+    convenience init(rgb: Int) {
+        
+        // we need to convert the RGB colors to their 255 value.
+        self.init(red: (rgb >> 16) & 0xFF,
+                  green: (rgb >> 8) & 0xFF,
+                  blue: rgb & 0xFF
+        )
+    }
+}
+
 // Added an extensin to UIView
 extension UIView {
     

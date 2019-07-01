@@ -30,7 +30,7 @@ class FoldersController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = .white
+        view.backgroundColor = UIColor.init(rgb: 0x00FFFF)
         navigationItem.title = "Folders"
         
         
