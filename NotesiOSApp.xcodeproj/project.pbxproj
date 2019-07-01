@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		676614FE22C99CE40028F589 /* NoteDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 676614FD22C99CE40028F589 /* NoteDetailController.swift */; };
 		67F6E1F222C81892002BEF25 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F6E1F122C81892002BEF25 /* AppDelegate.swift */; };
 		67F6E1F422C81892002BEF25 /* FoldersController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F6E1F322C81892002BEF25 /* FoldersController.swift */; };
 		67F6E1F922C81893002BEF25 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 67F6E1F822C81893002BEF25 /* Assets.xcassets */; };
@@ -16,6 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		676614FD22C99CE40028F589 /* NoteDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteDetailController.swift; sourceTree = "<group>"; };
 		67F6E1EE22C81892002BEF25 /* NotesiOSApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NotesiOSApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		67F6E1F122C81892002BEF25 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		67F6E1F322C81892002BEF25 /* FoldersController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoldersController.swift; sourceTree = "<group>"; };
@@ -71,6 +73,7 @@
 			children = (
 				67F6E1F322C81892002BEF25 /* FoldersController.swift */,
 				67F6E20422C830A4002BEF25 /* FolderNotesController.swift */,
+				676614FD22C99CE40028F589 /* NoteDetailController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -149,6 +152,7 @@
 				67F6E20522C830A4002BEF25 /* FolderNotesController.swift in Sources */,
 				67F6E1F222C81892002BEF25 /* AppDelegate.swift in Sources */,
 				67F6E20722C8493E002BEF25 /* extension.swift in Sources */,
+				676614FE22C99CE40028F589 /* NoteDetailController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
