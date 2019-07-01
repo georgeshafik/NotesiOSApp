@@ -45,7 +45,7 @@ class NoteDetailController: UIViewController {
         setupUI()
     }
     
-    // Here we will going to
+    // Here are going to
     // 1. Add our subviews
     // 2. Make our constraints
     // 3. Activate our views

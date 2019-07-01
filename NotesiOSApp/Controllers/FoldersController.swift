@@ -70,8 +70,12 @@ class FoldersController: UITableViewController {
 //        self.navigationController?.setToolbarHidden(true, animated: false)
 //    }
     
+    // We need to create a different type of UITableViewCell
     fileprivate func setupTableView() {
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: CELL_ID)
+        //tableView.register(UITableViewCell.self, forCellReuseIdentifier: CELL_ID)
+        // Note registered UITableViewCell but FolderCell
+        tableView.register(FolderCell.self, forCellReuseIdentifier: CELL_ID)
+
         tableView.tableHeaderView = headerView
     }
     
@@ -105,18 +109,27 @@ class FoldersController: UITableViewController {
 
 extension FoldersController {
     
-
-    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 20
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: CELL_ID, for: indexPath)
-        cell.textLabel?.text = "here's a note folder"
+        
+        // We need to use our FolderCell and provide it some data
+        // Cast our cell as FolderCell, make sure you register it first
+        let cell = tableView.dequeueReusableCell(withIdentifier: CELL_ID, for: indexPath) as! FolderCell
+        
+        // We have content in the customer cell and don't require this
+        // This cell has default values but we are not using them
+        //cell.textLabel?.text = "here's a note folder"
+        //cell.accessoryType = .disclosureIndicator // places the little arrow on the right of the cell row record
+        
         return cell
     }
     
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 50
+    }
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let folderNotesController = FolderNotesController()
         
