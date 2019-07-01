@@ -33,6 +33,8 @@ class FoldersController: UITableViewController {
         view.backgroundColor = .white
         navigationItem.title = "Folders"
         
+        
+        
         setupTableView()
     }
     
@@ -49,11 +51,20 @@ class FoldersController: UITableViewController {
         ]
         
         self.toolbarItems = items
+        
+        let editButton = UIBarButtonItem(barButtonSystemItem: .edit, target: nil, action: nil)
+        //self.navigationController?.setToolbarItems([editButton], animated: false)
+        //self.navigationItem.rightBarButtonItem = editButton
+        self.navigationItem.setRightBarButton(editButton, animated: false)
+        
+        self.navigationController?.toolbar.tintColor = .cyan // bottom toolbar
+        self.navigationController?.navigationBar.tintColor = .cyan // top toolbar
+        
         setupTranslucentView()
     }
     
 // Comment this out because we do not want to hide Toolbar on other view controllers
-// We basically want our Toolbar bar remain visiable on other view controllers
+// We basically want our Toolbar to remain visiable on other view controllers
 //    override func viewWillDisappear(_ animated: Bool) {
 //        super.viewWillAppear(animated)
 //
