@@ -16,6 +16,7 @@ class FolderCell: UITableViewCell {
             countLabel.text = String(folderData.notes.count)
         }
     }
+    
     fileprivate var label: UILabel = {
         let label = UILabel()
         label.text = "Folder title"

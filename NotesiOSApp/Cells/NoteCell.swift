@@ -10,6 +10,17 @@ import UIKit
 
 class NoteCell: UITableViewCell {
     
+    var noteData:Note! {
+        didSet {
+            
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "MM dd, yyyy"
+            noteTitle.text = noteData.title
+            dateLabel.text = dateFormatter.string(from: noteData.date)
+            previewLabel.text = noteData.text
+        }
+    }
+    
     // note title
     fileprivate var noteTitle: UILabel = {
         let label = UILabel()
