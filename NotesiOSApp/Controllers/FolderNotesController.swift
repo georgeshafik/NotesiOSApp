@@ -9,13 +9,19 @@
 import UIKit
 
 class FolderNotesController: UITableViewController {
+    
+    let searchController = UISearchController(searchResultsController: nil) // we are setting to nil because we want to use it on our table view
+    
+    
     var folderData:NoteFolder! {
         didSet {
             self.notes = folderData.notes
+            filteredNotes = notes
         }
     }
 
     fileprivate var notes = [Note]() // array of notes
+    fileprivate var filteredNotes = [Note]() // need a copy of notes to restor list when there is an empty search string
     
     fileprivate let CELL_ID:String = "CELL_ID"
     
@@ -25,9 +31,19 @@ class FolderNotesController: UITableViewController {
         self.navigationItem.title = "Folder Notes"
         
         setupTableView()
+        setupSearchBar()
     }
     
+    fileprivate func setupSearchBar() {
+        self.definesPresentationContext = true  // this allows the keyboard to popup when our using runs this on a real device
+                                                // also bottom navigation bar remains white
+        
+        navigationItem.searchController = searchController // hooked up our searchController into the top nagivation bar
+        navigationItem.hidesSearchBarWhenScrolling = false  // hide search bar when scroller - good when you have a lot of items to read
+        searchController.dimsBackgroundDuringPresentation = true // dims background when typing in serach terms into search controller
+        searchController.searchBar.delegate = self
     
+    }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
@@ -54,10 +70,25 @@ class FolderNotesController: UITableViewController {
     }
 }
 
+
+// This ensures we have defined the delegate to our serach bar
+// We can simply reference self as we exetend FolderNotesController
+extension FolderNotesController: UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        filteredNotes = notes.filter( { (note) -> Bool in
+            return note.title.contains(searchText)
+        })
+        if searchBar.text!.isEmpty && filteredNotes.isEmpty {
+            filteredNotes = notes
+        }
+        tableView.reloadData()
+    }        
+}
+
 extension FolderNotesController {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.notes.count
+        return self.filteredNotes.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -65,7 +96,7 @@ extension FolderNotesController {
         // hooking in NoteCell
         let cell = tableView.dequeueReusableCell(withIdentifier: CELL_ID, for: indexPath) as! NoteCell
         //cell.textLabel?.text = "here's a note"
-        let noteForRow = self.notes[indexPath.row] // using self data is in same class
+        let noteForRow = self.filteredNotes[indexPath.row] // using self data is in same class
         cell.noteData = noteForRow
         return cell
     }
