@@ -22,7 +22,7 @@ let secondFolderNotes = [
     Note(title: "YouTube Channels", date: Date(), text: "I also have two youtube channels. One for iOS development videos, another for developer vlogs.")
 ]
 
-var noteFolder:[NoteFolder] = [
+var noteFolders:[NoteFolder] = [
     NoteFolder(title: "Course Notes", notes: firstFolderNotes),
     NoteFolder(title: "Social Media", notes: secondFolderNotes)
 ]
@@ -128,7 +128,8 @@ class FoldersController: UITableViewController {
 extension FoldersController {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 20
+        // We constained the number of rows to view to the number of rows of data we have
+        return noteFolders.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -141,6 +142,20 @@ extension FoldersController {
         // This cell has default values but we are not using them
         //cell.textLabel?.text = "here's a note folder"
         //cell.accessoryType = .disclosureIndicator // places the little arrow on the right of the cell row record
+        
+        let folderForRow = noteFolders[indexPath.row]
+        cell.folderData = folderForRow // setting cel.folderData will call cell didSet method in FolderCell.swift
+
+// if we remove fileprivate in FolderCell.swift
+// from
+//        fileprivate var label: UILabel =
+//        fileprivate var countLabel: UILabel =
+// To this:
+//        var label: UILabel =
+//        var countLabel: UILabel =
+// Then we can do the following
+//        cell.label.text = folderForRow.title
+//        cell.countLabel.text = String(folderForRow.notes.count)
         
         return cell
     }

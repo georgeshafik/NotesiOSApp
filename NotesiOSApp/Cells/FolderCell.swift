@@ -10,6 +10,12 @@ import UIKit
 
 class FolderCell: UITableViewCell {
     
+    var folderData:NoteFolder! {
+        didSet {
+            label.text = folderData.title
+            countLabel.text = String(folderData.notes.count)
+        }
+    }
     fileprivate var label: UILabel = {
         let label = UILabel()
         label.text = "Folder title"
