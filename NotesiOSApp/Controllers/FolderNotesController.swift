@@ -106,6 +106,10 @@ extension FolderNotesController {
         // we need to provide actions
         let deleteAction = UITableViewRowAction(style: .destructive, title: "Delecte") {(action, indexPath) in
             print("tyring to delete item at indexPath", indexPath)
+            let targetRow = indexPath.row
+            self.notes.remove(at: targetRow)
+            self.filteredNotes.remove(at: targetRow)
+            tableView.deleteRows(at: [indexPath], with: .fade)
         }
         
         actions.append(deleteAction)
