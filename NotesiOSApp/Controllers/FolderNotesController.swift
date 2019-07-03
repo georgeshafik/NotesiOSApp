@@ -68,6 +68,9 @@ class FolderNotesController: UITableViewController {
         // hooking in NoteCell
         tableView.register(NoteCell.self, forCellReuseIdentifier: CELL_ID)
     }
+    
+    var cachedText:String = ""
+
 }
 
 
@@ -76,13 +79,22 @@ class FolderNotesController: UITableViewController {
 extension FolderNotesController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         filteredNotes = notes.filter( { (note) -> Bool in
-            return note.title.contains(searchText)
+            // also make seach case insensitive
+            return note.title.lowercased().contains(searchText.lowercased())
         })
         if searchBar.text!.isEmpty && filteredNotes.isEmpty {
             filteredNotes = notes
         }
+        cachedText = searchText
         tableView.reloadData()
-    }        
+    }
+    
+    // Tells the UISearchBarDelegeate with have ended entering text in the Search Bar
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        if !cachedText.isEmpty && !filteredNotes.isEmpty {
+            searchController.searchBar.text = cachedText
+        }
+    }
 }
 
 extension FolderNotesController {
