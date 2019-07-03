@@ -63,7 +63,7 @@ class FoldersController: UITableViewController {
         // We placed a flexible barButtonSystemItem to pushed our New Folder toolbar button to the right
         let items:[UIBarButtonItem] = [
             UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil),
-            UIBarButtonItem(title: "New Folder", style: .done, target: self, action: nil)
+            UIBarButtonItem(title: "New Folder", style: .done, target: self, action: #selector(self.handleAddNewFolder))
         ]
         
         self.toolbarItems = items
@@ -77,6 +77,35 @@ class FoldersController: UITableViewController {
         self.navigationController?.navigationBar.tintColor = .primaryColor // top toolbar
         
         setupTranslucentView()
+    }
+    
+    
+    var textField:UITextField!
+    
+    @objc fileprivate func handleAddNewFolder() {
+        let addAlert = UIAlertController(title: "New Folder", message: "Enter a name for this folder.", preferredStyle: .alert)
+        
+        addAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (_) in
+            addAlert.dismiss(animated: true)
+        }))
+        
+        addAlert.addTextField { (tf) in
+            // reference textfield outside of this method
+            self.textField = tf
+        }
+        
+        addAlert.addAction(UIAlertAction(title: "Save", style: .default, handler: { (_) in addAlert.dismiss(animated: true)
+           addAlert.dismiss(animated: true)
+            
+            // insert a new folder with the correct title
+            guard let title = self.textField.text else { return }
+            
+            let newFolder = NoteFolder(title: title, notes: [])
+            noteFolders.append(newFolder)
+            self.tableView.insertRows(at: [IndexPath(row: noteFolders.count-1, section: 0)], with: .fade)            
+        }))
+        
+        present(addAlert, animated: true)
     }
     
 // Comment this out because we do not want to hide Toolbar on other view controllers
