@@ -7,9 +7,10 @@
     </entity>
     <entity name="NoteFolder" representedClassName="NoteFolder" syncable="YES" codeGenerationType="class">
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="notes" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Note" syncable="YES"/>
     </entity>
     <elements>
-        <element name="NoteFolder" positionX="-63" positionY="-18" width="128" height="60"/>
+        <element name="NoteFolder" positionX="-357" positionY="47.3359375" width="128" height="73"/>
         <element name="Note" positionX="-54" positionY="-9" width="128" height="90"/>
     </elements>
 </model>
