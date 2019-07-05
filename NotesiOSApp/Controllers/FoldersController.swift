@@ -161,6 +161,18 @@ class FoldersController: UITableViewController {
 
 extension FoldersController {
     
+    override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        let deleteAction = UITableViewRowAction(style: .destructive, title: "Delete") { (rowAction, indexPath) in
+            let myNoteFolder = noteFolders[indexPath.row]
+            if CoreDataManager.shared.deleteNoteFolder(noteFolder: myNoteFolder) {
+                noteFolders.remove(at: indexPath.row)
+                tableView.deleteRows(at: [indexPath], with: .fade)
+            }
+        }
+        
+        return [deleteAction]
+    }
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // We constained the number of rows to view to the number of rows of data we have
         return noteFolders.count

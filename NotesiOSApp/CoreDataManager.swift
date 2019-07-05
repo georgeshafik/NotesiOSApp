@@ -55,4 +55,18 @@ struct CoreDataManager {
             return []
         }
     }
+    
+    func deleteNoteFolder(noteFolder: NoteFolder) -> Bool {
+        let context = persistentContainer.viewContext
+        
+        context.delete(noteFolder);
+        
+        do {
+            try context.save() // this save performs the delete oepration on core data
+            return true
+        } catch let err {
+            print("error deleting nnote folder entity instance", err)
+            return false
+        }
+    }
 }
