@@ -22,4 +22,23 @@ struct CoreDataManager {
         })
         return container
     }()
+    
+    // 1. createNoteFolder
+    func createNoteFolder(title: String) -> NoteFolder {
+        let context = persistentContainer.viewContext
+        
+        let newNoteFolder = NSEntityDescription.insertNewObject(forEntityName: "NoteFolder", into: context)
+        
+        newNoteFolder.setValue(title, forKey: "title")
+        
+        do {
+            try context.save()
+            return newNoteFolder as! NoteFolder
+        } catch let err {
+            print("Failed to save new note folder:",err)
+            return newNoteFolder as! NoteFolder
+        }
+    }
+    
+    // 2. fetchNoteFolder
 }
