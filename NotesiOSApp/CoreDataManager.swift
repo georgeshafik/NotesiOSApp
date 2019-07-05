@@ -40,5 +40,19 @@ struct CoreDataManager {
         }
     }
     
-    // 2. fetchNoteFolder
+    // 2. fetchNoteFolder - will return an array of NoteFolders
+    func fetchNoteFolders() -> [NoteFolder] {
+        let context = persistentContainer.viewContext
+        
+        let fetchRequest = NSFetchRequest<NoteFolder>(entityName: "NoteFolder")
+        
+        do {
+            let noteFolders = try context.fetch(fetchRequest)
+            
+            return noteFolders
+        } catch let err {
+            print("Failed to fetch note folders")
+            return []
+        }
+    }
 }

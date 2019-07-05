@@ -54,6 +54,8 @@ class FoldersController: UITableViewController {
         //view.backgroundColor = UIColor.init(rgb: 0x00FFFF)
         navigationItem.title = "Folders"
         
+        noteFolders = CoreDataManager.shared.fetchNoteFolders()
+        
         setupTableView()
     }
     
