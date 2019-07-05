@@ -16,7 +16,7 @@ class NoteCell: UITableViewCell {
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "MM dd, yyyy"
             noteTitle.text = noteData.title
-            dateLabel.text = dateFormatter.string(from: noteData.date)
+            dateLabel.text = dateFormatter.string(from: noteData.date ?? Date()) // if you note and don't have a date then you want it modified to today so creating a current date Date() is fine
             previewLabel.text = noteData.text
         }
     }

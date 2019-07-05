@@ -8,24 +8,27 @@
 
 import UIKit
 
-// Best way to create data is to place it outside the classes.
-// Later we will remove this code when we get to the Core Data.
-// Basically we are going to migrate this code to Core Data when we get to that.
-let firstFolderNotes = [
-    Note(title: "UITableViews", date: Date(), text: "table views use protocols to receive data"),
-    Note(title: "Collection Views", date: Date(), text: "collection views can be customized with flow layouts to create layouts like you see in the Pinterest app.."),
-    Note(title: "Flow Views", date: Date(), text: "custom= layouts can be make with UICollectionViewFlowLayout")
-]
+//// Best way to create data is to place it outside the classes.
+//// Later we will remove this code when we get to the Core Data.
+//// Basically we are going to migrate this code to Core Data when we get to that.
+//let firstFolderNotes = [
+//    Note(title: "UITableViews", date: Date(), text: "table views use protocols to receive data"),
+//    Note(title: "Collection Views", date: Date(), text: "collection views can be customized with flow layouts to create layouts like you see in the Pinterest app.."),
+//    Note(title: "Flow Views", date: Date(), text: "custom= layouts can be make with UICollectionViewFlowLayout")
+//]
+//
+//let secondFolderNotes = [
+//    Note(title: "Instagram", date: Date(), text: "I have tow Instragram accounts. maxcodes && maxcodes.io"),
+//    Note(title: "YouTube Channels", date: Date(), text: "I also have two youtube channels. One for iOS development videos, another for developer vlogs.")
+//]
+//
+//var noteFolders:[NoteFolder] = [
+//    NoteFolder(title: "Course Notes", notes: firstFolderNotes),
+//    NoteFolder(title: "Social Media", notes: secondFolderNotes)
+//]
 
-let secondFolderNotes = [
-    Note(title: "Instagram", date: Date(), text: "I have tow Instragram accounts. maxcodes && maxcodes.io"),
-    Note(title: "YouTube Channels", date: Date(), text: "I also have two youtube channels. One for iOS development videos, another for developer vlogs.")
-]
-
-var noteFolders:[NoteFolder] = [
-    NoteFolder(title: "Course Notes", notes: firstFolderNotes),
-    NoteFolder(title: "Social Media", notes: secondFolderNotes)
-]
+// temp fix while we refactor code to make use of Core Data 
+var noteFolders = [NoteFolder]()
 
 // UITableViewController contains UITableViewSource and UITableViewDelegate
 class FoldersController: UITableViewController {
@@ -100,9 +103,9 @@ class FoldersController: UITableViewController {
             // insert a new folder with the correct title
             guard let title = self.textField.text else { return }
             
-            let newFolder = NoteFolder(title: title, notes: [])
-            noteFolders.append(newFolder)
-            self.tableView.insertRows(at: [IndexPath(row: noteFolders.count-1, section: 0)], with: .fade)            
+//            let newFolder = NoteFolder(title: title, notes: [])
+//            noteFolders.append(newFolder)
+//            self.tableView.insertRows(at: [IndexPath(row: noteFolders.count-1, section: 0)], with: .fade)
         }))
         
         present(addAlert, animated: true)

@@ -15,7 +15,7 @@ class FolderNotesController: UITableViewController {
     
     var folderData:NoteFolder! {
         didSet {
-            self.notes = folderData.notes
+//            self.notes = folderData.notes // this will be replace with a relationship in core data model between the entities NoteFolder and the Notes arrays
             filteredNotes = notes
         }
     }
@@ -80,7 +80,7 @@ extension FolderNotesController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         filteredNotes = notes.filter( { (note) -> Bool in
             // also make seach case insensitive
-            return note.title.lowercased().contains(searchText.lowercased())
+            return note.title?.lowercased().contains(searchText.lowercased()) ?? false // if title does not exist then applying lowercased ... etc will not work either so simply fail it by placing ?? and returning a false failing it
         })
         if searchBar.text!.isEmpty && filteredNotes.isEmpty {
             filteredNotes = notes
