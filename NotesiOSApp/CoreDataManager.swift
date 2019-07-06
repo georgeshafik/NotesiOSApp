@@ -94,4 +94,18 @@ struct CoreDataManager {
         guard let folderNotes = noteFolder.notes?.allObjects as? [Note] else { return [] }
         return folderNotes
     }
+    
+    func deleteNote(note: Note) -> Bool {
+        let context = persistentContainer.viewContext
+        
+        context.delete(note);
+        
+        do {
+            try context.save() // this save performs the delete oepration on core data
+            return true
+        } catch let err {
+            print("error deleting note entity instance", err)
+            return false
+        }
+    }
 }
