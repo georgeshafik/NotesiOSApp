@@ -68,6 +68,8 @@ class FolderNotesController: UITableViewController {
         ]
         
         self.toolbarItems = items
+        
+        tableView.reloadData()
     }
     
     @objc fileprivate func createNewNote() {
@@ -149,6 +151,8 @@ extension FolderNotesController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         // we will push a notes view controller here!
         let noteDetailController = NoteDetailController()
+        let noteForRow = self.filteredNotes[indexPath.row]
+        noteDetailController.noteData = noteForRow
         navigationController?.pushViewController(noteDetailController, animated: true)
     }
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

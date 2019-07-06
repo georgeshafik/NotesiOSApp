@@ -108,4 +108,18 @@ struct CoreDataManager {
             return false
         }
     }
+    
+    func saveUpdatedNote(note: Note, newText: String) {
+        let context = persistentContainer.viewContext
+        
+        note.title = newText
+        note.text = newText
+        note.date = Date()
+        
+        do {
+            try context.save()
+        } catch let err {
+            print("error saving/updating note", err)
+        }
+    }
 }
