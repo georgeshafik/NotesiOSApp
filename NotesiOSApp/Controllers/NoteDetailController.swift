@@ -14,10 +14,14 @@ protocol NoteDelegate {
 
 class NoteDetailController: UIViewController {
     
+    let dateFormatter: DateFormatter = {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MMM dd,yyyy 'at' h:mm a"
+        return dateFormatter
+    }()
+    
     var noteData:Note! {
         didSet {
-            let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "MM dd, yyyy"
             textView.text = noteData.title
             dateLabel.text = dateFormatter.string(from: noteData.date ?? Date())
 
@@ -40,7 +44,7 @@ class NoteDetailController: UIViewController {
     }()
     
     // We want to return a date label
-    fileprivate var dateLabel: UILabel = {
+    fileprivate lazy var dateLabel: UILabel = {
         let label = UILabel()
         
         // You want to set this to false in order to use
@@ -49,7 +53,7 @@ class NoteDetailController: UIViewController {
         
         label.font = UIFont.systemFont(ofSize: 14, weight: .light)
         label.textColor = .gray
-        label.text = "July 1st 2019 at 1:04 pm"
+        label.text = dateFormatter.string(from: Date())
         label.textAlignment = .center
         return label
     }()
