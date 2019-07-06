@@ -13,7 +13,8 @@ class FolderCell: UITableViewCell {
     var folderData:NoteFolder! {
         didSet {
             label.text = folderData.title
-//            countLabel.text = String(folderData.notes.count) // FolderNotes does not exist yet
+            let count = CoreDataManager.shared.fetdhNotes(fromr: folderData).count
+           countLabel.text = String(count)
         }
     }
     

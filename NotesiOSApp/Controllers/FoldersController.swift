@@ -82,6 +82,8 @@ class FoldersController: UITableViewController {
         self.navigationController?.navigationBar.tintColor = .primaryColor // top toolbar
         
         setupTranslucentView()
+        
+        self.tableView.reloadData()
     }
     
     
