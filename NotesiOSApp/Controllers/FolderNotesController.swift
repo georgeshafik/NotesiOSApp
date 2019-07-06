@@ -27,6 +27,7 @@ class FolderNotesController: UITableViewController {
     var folderData:NoteFolder! {
         didSet {
 //            self.notes = folderData.notes // this will be replace with a relationship in core data model between the entities NoteFolder and the Notes arrays
+            notes = CoreDataManager.shared.fetdhNotes(fromr: folderData)
             filteredNotes = notes
         }
     }

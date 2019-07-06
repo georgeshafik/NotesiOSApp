@@ -79,6 +79,7 @@ struct CoreDataManager {
         newNote.setValue(title, forKey: "title")
         newNote.text = text
         newNote.date = date
+        newNote.noteFolderRelationShip = noteFolder
         
         do {
             try context.save()
@@ -87,7 +88,10 @@ struct CoreDataManager {
             print("Failed to save new note folder:",err)
             return newNote
         }
-
-
+    }
+    
+    func fetdhNotes(fromr noteFolder: NoteFolder) -> [Note] {
+        guard let folderNotes = noteFolder.notes?.allObjects as? [Note] else { return [] }
+        return folderNotes
     }
 }
