@@ -51,7 +51,7 @@ struct CoreDataManager {
             
             return noteFolders
         } catch let err {
-            print("Failed to fetch note folders")
+            print("Failed to fetch note folders \(err.localizedDescription)")
             return []
         }
     }
@@ -68,5 +68,26 @@ struct CoreDataManager {
             print("error deleting nnote folder entity instance", err)
             return false
         }
+    }
+    
+    // NOTE FUNCTIONS
+    func createNewNote(title: String, date: Date, text: String, noteFolder: NoteFolder) -> Note {
+        let context = persistentContainer.viewContext
+       
+        let newNote = NSEntityDescription.insertNewObject(forEntityName: "Note", into: context) as! Note
+
+        newNote.setValue(title, forKey: "title")
+        newNote.text = text
+        newNote.date = date
+        
+        do {
+            try context.save()
+            return newNote
+        } catch let err {
+            print("Failed to save new note folder:",err)
+            return newNote
+        }
+
+
     }
 }

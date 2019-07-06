@@ -11,7 +11,12 @@ import UIKit
 extension FolderNotesController: NoteDelegate {
     func saveNewNote(title: String, date: Date, text: String) {
         print(title, date, text)
-    }        
+        
+        let newNote = CoreDataManager.shared.createNewNote(title: title, date: date, text: text, noteFolder: self.folderData)
+        notes.append(newNote)
+        filteredNotes.append(newNote)
+        self.tableView.insertRows(at: [IndexPath(row: notes.count-1, section: 0)], with: .fade)
+    }
 }
 
 class FolderNotesController: UITableViewController {

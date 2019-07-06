@@ -52,7 +52,8 @@ class NoteDetailController: UIViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        delegate?.saveNewNote(title: "asdf", date: Date(), text: "new text")        
+        
+        delegate?.saveNewNote(title: textView.text, date: Date(), text: textView.text)        
     }
     
     // Here are going to
