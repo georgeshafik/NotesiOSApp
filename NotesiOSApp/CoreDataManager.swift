@@ -56,10 +56,10 @@ struct CoreDataManager {
         }
     }
     
-    func deleteNoteFolder(noteFolder: NoteFolder) -> Bool {
+    func deleteNoteFolder(noteFolderRelationShip: NoteFolder) -> Bool {
         let context = persistentContainer.viewContext
         
-        context.delete(noteFolder);
+        context.delete(noteFolderRelationShip);
         
         do {
             try context.save() // this save performs the delete oepration on core data

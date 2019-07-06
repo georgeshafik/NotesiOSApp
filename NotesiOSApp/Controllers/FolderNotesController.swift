@@ -8,6 +8,12 @@
 
 import UIKit
 
+extension FolderNotesController: NoteDelegate {
+    func saveNewNote(title: String, date: Date, text: String) {
+        print(title, date, text)
+    }        
+}
+
 class FolderNotesController: UITableViewController {
     
     let searchController = UISearchController(searchResultsController: nil) // we are setting to nil because we want to use it on our table view
@@ -60,6 +66,7 @@ class FolderNotesController: UITableViewController {
     
     @objc fileprivate func createNewNote() {
         let noteDetailedController = NoteDetailController()
+        noteDetailedController.delegate = self
         navigationController?.pushViewController(noteDetailedController, animated: true)
     }
     

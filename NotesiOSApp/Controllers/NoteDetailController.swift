@@ -8,7 +8,13 @@
 
 import UIKit
 
+protocol NoteDelegate {
+    func saveNewNote(title: String, date: Date, text: String)
+}
+
 class NoteDetailController: UIViewController {
+    
+    var delegate: NoteDelegate?
     
     fileprivate var textView: UITextView = {
         let tf = UITextView()
@@ -40,9 +46,13 @@ class NoteDetailController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         view.backgroundColor = .white
         setupUI()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        delegate?.saveNewNote(title: "asdf", date: Date(), text: "new text")        
     }
     
     // Here are going to

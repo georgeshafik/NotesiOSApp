@@ -164,7 +164,7 @@ extension FoldersController {
     override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         let deleteAction = UITableViewRowAction(style: .destructive, title: "Delete") { (rowAction, indexPath) in
             let myNoteFolder = noteFolders[indexPath.row]
-            if CoreDataManager.shared.deleteNoteFolder(noteFolder: myNoteFolder) {
+            if CoreDataManager.shared.deleteNoteFolder(noteFolderRelationShip: myNoteFolder) {
                 noteFolders.remove(at: indexPath.row)
                 tableView.deleteRows(at: [indexPath], with: .fade)
             }
